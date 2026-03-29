@@ -8,7 +8,9 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./app.css";
+import NavBar from "~/components/navBar";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -29,10 +31,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Lefty's Appalachian Kitchen</title>
         <Meta />
         <Links />
       </head>
       <body>
+         <NavBar/>
         {children}
         <ScrollRestoration />
         <Scripts />
