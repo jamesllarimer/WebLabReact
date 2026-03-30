@@ -1,15 +1,237 @@
-@import "tailwindcss";
+/*I used AI to generate a logo based off a restaurant concept I had. I liked the colors that it had in it so I decided to use them for my colors on the site. The seem earthy and rustic which fits the mood of an appalachian mtn restaurant.
+I have a primary and secondary that are both darker colors then I use lighter shades of those colors to contrast and when I need extra contrast I use a white. */
+:root {
+  --primary: #264c3c; /*Darker green for header, text on light background */
+  --primary-light: #7a896b; /*light green for accent coloring*/
+  --secondary: #a8541a; /*Brown orange for secondary text color on light or dark background */
+  --secondary-light: #ae8d5f; /*Darker tan */
+  --light: #fdf1da; /* off white for light backgrounds or text on dark background */
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* Borders */
+  --bs-border-color: #7a896b;
+
 }
 
-/*html,*/
-/*body {*/
-/*  @apply bg-white dark:bg-gray-950;*/
+.navbar-toggler-icon {
+  color: var(--primary-light);
+}
 
-/*  @media (prefers-color-scheme: dark) {*/
-/*    color-scheme: dark;*/
-/*  }*/
-/*}*/
+.nav-logo {
+  max-height: 75px;
+  margin: 5px;
+}
+
+.navbar {
+  background-color: var(--primary);
+}
+
+.nav-link {
+  color: var(--light);
+  padding: 10px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary);
+  transform: scale(105%);
+}
+
+.body-logo {
+  float: left;
+  max-height: 200px;
+}
+
+.primary-background {
+  background-color: var(--primary);
+}
+
+.primary-text {
+  color: var(--primary);
+  font-family: 'Rye', serif;
+  /*This is one of my google fonts.*/
+}
+
+.secondary-background {
+  background-color: var(--secondary);
+}
+
+.secondary-text {
+  color: var(--secondary);
+  font-family: 'Zilla Slab', serif;
+  /*This is the other google fonts.*/
+}
+
+h2 {
+  font-size: 40px;
+}
+
+body, p, li {
+  font-family: 'Zilla Slab', serif;
+  color: var(--secondary);
+}
+
+body, html {
+  background-color: var(--light);
+}
+
+.restaurant-name-nav {
+  color: var(--light);
+  font-weight: bold;
+  font-size: 26px;
+}
+
+/*hero */
+.hero-section {
+  position: relative;
+  text-align: center;
+  margin: 0; /* remove the 40px margin on mobile */
+}
+
+.hero-section img {
+  width: 100%;
+  filter: brightness(70%);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.hero-text h1 {
+  color: var(--light);
+  font-size: 4rem
+}
+
+.hero-text p {
+  font-size: 3rem;
+  color: var(--secondary-light);
+}
+
+table {
+  border: 5px solid var(--primary);
+  box-shadow: #444444 3px 3px 3px;
+}
+
+thead tr {
+  background-color: var(--primary);
+  margin-top: 20px;
+}
+
+caption {
+  color: var(--primary);
+  font-size: 40px;
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+form {
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: var(--primary);
+}
+
+label {
+  color: var(--light);
+}
+
+button {
+  background-color: var(--light);
+  color: var(--primary);
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+button:hover {
+  color: var(--light);
+  background-color: var(--secondary);
+}
+
+legend {
+  color: var(--light);
+  font-size: 18px;
+}
+
+fieldset {
+  border: 1px solid var(--light);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 5px;
+}
+
+.card-group .card:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  background-color: var(--light);
+  padding: 0px;
+}
+
+.card-title-custom {
+  font-size: 3rem;
+  color: var(--primary);
+}
+
+.card-text-custom {
+  font-size: 2rem;
+  color: var(--secondary);
+}
+
+
+.our-team {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.radio-group {
+  margin: 5px 0;
+}
+
+.btn-light {
+  color: var(--primary);
+  background-color: var(--light);
+}
+.btn-primary{
+  background-color: var(--primary);
+  color: var(--light);
+}
+
+.btn-dark {
+  color: var(--secondary);
+  background-color: var(--light);
+}
+.bg-primary-override{
+  background-color: var(--primary);
+  color: var(--light);
+}
+.bordered{
+  border-bottom: 1px solid var(--primary);
+}
+
+li h5 {
+  color: var(--primary);
+}
+
+#cart-card{
+  background-color: var(--primary);
+}
+#card-header-text {
+  color: var(--light);
+}
+#cart-total{
+  color: var(--light);
+}
+
+.light-text{
+  color: var(--light);
+}
+#cart{
+  background-color: var(--primary);
+  box-shadow: #444444 3px 3px 3px;
+  border-radius: 10px;
+}
+

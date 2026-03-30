@@ -3,7 +3,8 @@ import type {MenuItem} from "~/types";
 
 export function MenuCard({id, name, category, description, price}: MenuItem) {
     return (
-        <Card key={id}
+        <Card className="my-2"
+            key={id}
         >
             <CardBody>
                 <CardTitle tag="h5">

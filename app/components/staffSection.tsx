@@ -9,7 +9,7 @@ export default function StaffSection() {
         const [staff_info, setStaff] = useState<StaffInfo[]>(initialStaff);
 
         return (
-            <div>
+            <div className="my-3">
                 <h3>Staff</h3>
                 <CardGroup>
                 {staff_info.map((staff) => (
