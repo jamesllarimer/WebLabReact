@@ -16,7 +16,7 @@ function NavBar() {
 
     return (
         <div>
-            <Navbar className="navbar-expand-lg navbar-dark bg-dark">
+            <Navbar className="navbar navbar-expand-lg navbar-dark">
                 <img className="nav-logo" src="app/images/Logo.png" alt="Lefty's appalachian kitchen logo"/>
                 <NavbarBrand href="/">Lefty's Appalachian Kitchen</NavbarBrand>
                 <NavbarToggler onClick={toggle} />

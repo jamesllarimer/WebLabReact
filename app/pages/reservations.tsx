@@ -10,7 +10,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Reservations() {
-    return <Container>
+    return <Container className={"my-4"}>
         <ReservationForm/>
     </Container>;
 }

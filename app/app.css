@@ -137,7 +137,7 @@ label {
   color: var(--light);
 }
 
-button {
+.button-custom {
   background-color: var(--light);
   color: var(--primary);
   padding: 10px 20px;
@@ -145,7 +145,7 @@ button {
   font-size: 16px;
 }
 
-button:hover {
+.button-custom:hover {
   color: var(--light);
   background-color: var(--secondary);
 }
@@ -168,7 +168,9 @@ fieldset {
 
 .card {
   background-color: var(--light);
-  padding: 0px;
+  color: #264c3c;
+  border-color: var(--primary);
+
 }
 
 .card-title-custom {
@@ -180,7 +182,10 @@ fieldset {
   font-size: 2rem;
   color: var(--secondary);
 }
-
+.menu-section-header{
+  background-color: var(--primary);
+  color: var(--light);
+}
 
 .our-team {
   padding-top: 2rem;
@@ -234,4 +239,6 @@ li h5 {
   box-shadow: #444444 3px 3px 3px;
   border-radius: 10px;
 }
-
+#CategoryFilterLabel{
+  color: var(--primary);
+}

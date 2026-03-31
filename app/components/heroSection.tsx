@@ -7,8 +7,7 @@ export default function HeroSection() {
             <div className="hero-text">
                 <h1>Lefty's Appalachian Kitchen</h1>
                 <p>When you're here you're hillbilly</p>
-                <NavLink href="/reservations"><Button>Make a Reservation</Button></NavLink>
-
+                <NavLink href="/reservations"><Button className={"button-custom"}>Make a Reservation</Button></NavLink>
             </div>
         </div>
     )
