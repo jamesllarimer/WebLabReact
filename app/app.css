@@ -11,7 +11,11 @@ I have a primary and secondary that are both darker colors then I use lighter sh
   --bs-border-color: #7a896b;
 
 }
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 .navbar-toggler-icon {
   color: var(--primary-light);
 }

@@ -1,6 +1,9 @@
-import {Container} from "reactstrap";
+import {Button, Container} from "reactstrap";
 import {useCart} from "~/context/CartContext";
 import type {Route} from "../../.react-router/types/app/pages/+types/checkout";
+import ActionModal from "~/components/actionModal";
+import {useState} from "react";
+import {useNavigate} from "react-router";
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -8,15 +11,65 @@ export function meta({}: Route.MetaArgs) {
         {name: "description", content: "Lefty's Appalachian Kitchen Restaurant Checkout page"},
     ];
 }
+
 export default function Checkout() {
-    const {cartItems, cartCount, cartTotal}= useCart();
+    const navigate = useNavigate();
+    const {cartItems, cartCount, cartTotal, clearCart} = useCart();
+    const [checkoutModalOpen, setCheckoutModalOpen] = useState(false);
+    const [clearCartModalOpen, setClearCartModalOpen] = useState(false);
+    const [thankYouModalOpen, setThankYouModalOpen] = useState(false);
+    let cartItemList = cartItems.map((item) => {
+        return <li key={item.id}>{`${item.quantity}: ${item.name}`}</li>
+    });
+
+    function confirmClearCart() {
+        clearCart();
+        setClearCartModalOpen(false);
+        setThankYouModalOpen(true);
+    }
+
+    function clearCartAfterCheckout() {
+        clearCart();
+        setCheckoutModalOpen(false);
+        navigate("/menu");
+    }
+
     return (
         <Container>
             <h1>Checkout</h1>
             <ul>
+                {cartItemList}
                 <li>Total Count {cartCount}</li>
                 <li>Total Amount {cartTotal}</li>
             </ul>
+            <Button onClick={() => setCheckoutModalOpen(!checkoutModalOpen)}>Checkout</Button>
+            <Button onClick={() => setClearCartModalOpen(!clearCartModalOpen)}>Clear Cart</Button>
+
+            <ActionModal title={"Checkout Complete"}
+                         body={"Thank you for your order!"}
+                         cancelFunction={() => clearCartAfterCheckout()}
+                         isModalOpen={checkoutModalOpen}
+                         toggle={() => setCheckoutModalOpen(!checkoutModalOpen)}
+                         cancelText={"Close"}
+            />
+
+            <ActionModal title={"Clear Cart"}
+                         body={"Are you sure you want to cancel your order?"}
+                         cancelFunction={() => setClearCartModalOpen(!clearCartModalOpen)}
+                         submitFunction={() => confirmClearCart()}
+                         isModalOpen={clearCartModalOpen}
+                         toggle={() => setClearCartModalOpen(!clearCartModalOpen)}
+                         cancelText={"Cancel"}
+                         submitText={"Confirm"}
+            />
+
+            <ActionModal title={"Order Canceled"}
+                         body={"Come back when you're hungry y'all!"}
+                         cancelFunction={() => navigate("/menu")}
+                         isModalOpen={thankYouModalOpen}
+                         toggle={() => setCheckoutModalOpen(!checkoutModalOpen)}
+                         cancelText={"Go Back To Menu"}
+            />
         </Container>
     )
 }

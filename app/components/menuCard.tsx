@@ -1,7 +1,7 @@
-import {Card, CardBody, CardTitle, CardSubtitle, CardText, Button, Input, InputGroup} from "reactstrap";
+import {Card, CardBody, CardTitle, CardText, Button, Input, InputGroup} from "reactstrap";
 import type {MenuItem} from "~/types";
 import { useState } from "react";
-import { useCart } from "../context/CartContext";
+import { useCart } from "~/context/CartContext";
 
 export function MenuCard({ id, name, description, price }: MenuItem) {
     const [quantity, setQuantity] = useState(1);

@@ -14,3 +14,14 @@ export interface MenuItem {
     category: string;
 }
 
+export interface ModalArgs {
+    title: string;
+    body: string;
+    submitFunction?: () => void;
+    cancelFunction?: () => void;
+    isModalOpen: boolean;
+    toggle: () => void;
+    submitText?: string;
+    cancelText: string;
+}
+
