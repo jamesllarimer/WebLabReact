@@ -21,7 +21,7 @@ export function Cart(){
                 </ul>
             </CardBody>
             <CardFooter>
-                <Link to="/checkout"><Button variant="contained" color="secondary">Checkout</Button></Link>
+                <Link to="/checkout"><Button color="primary">Checkout</Button></Link>
                 <span> Cart Total: ${cartTotal}</span>
             </CardFooter>
         </Card>

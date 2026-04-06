@@ -1,4 +1,4 @@
-import {Button, Container} from "reactstrap";
+import {Button, Card, CardBody, CardFooter, CardText, CardTitle, Container, ListGroup, ListGroupItem} from "reactstrap";
 import {useCart} from "~/context/CartContext";
 import type {Route} from "../../.react-router/types/app/pages/+types/checkout";
 import ActionModal from "~/components/actionModal";
@@ -37,13 +37,23 @@ export default function Checkout() {
     return (
         <Container>
             <h1>Checkout</h1>
-            <ul>
-                {cartItemList}
-                <li>Total Count {cartCount}</li>
-                <li>Total Amount {cartTotal}</li>
-            </ul>
-            <Button onClick={() => setCheckoutModalOpen(!checkoutModalOpen)}>Checkout</Button>
-            <Button onClick={() => setClearCartModalOpen(!clearCartModalOpen)}>Clear Cart</Button>
+            <Card>
+                <CardTitle>Cart</CardTitle>
+                <ul>
+                    {cartItemList}
+                </ul>
+                <CardBody>
+                    <CardText>Subtotal {cartTotal}</CardText>
+                    <CardText>Tax Rate: 8%</CardText>
+                    <CardText>Tax: {(cartTotal * 0.08).toFixed(2)}</CardText>
+                    <CardText>Total: {(cartTotal * 1.08).toFixed(2)}</CardText>
+                </CardBody>
+                <CardFooter>
+                    <Button color="primary"  onClick={() => setCheckoutModalOpen(!checkoutModalOpen)}>Checkout</Button>
+                    {' '}
+                    <Button color="danger" onClick={() => setClearCartModalOpen(!clearCartModalOpen)}>Clear Cart</Button>
+                </CardFooter>
+            </Card>
 
             <ActionModal title={"Checkout Complete"}
                          body={"Thank you for your order!"}
