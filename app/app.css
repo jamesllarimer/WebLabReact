@@ -225,6 +225,16 @@ fieldset {
     background-color: var(--light);
 }
 
+.btn-outline-primary{
+    color: var(--light);
+    border-color: var(--light);
+}
+
+.btn-outline-primary + .active{
+    color: var(--primary);
+    border-color: var(--light);
+    background-color: var(--light);
+}
 .bg-primary-override {
     background-color: var(--primary);
     color: var(--light);

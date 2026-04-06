@@ -1,37 +1,45 @@
-import {Form, FormGroup, FormText, Label, Input, Button} from "reactstrap";
+import {Form, FormGroup, FormText, Label, Input, Button, ButtonGroup, FormFeedback} from "reactstrap";
+import {useState} from "react";
 
 export function ReservationForm() {
+    const [selected, setSelected] = useState('');
+    const handleFormSubmit = (e: any) => {
+        e.preventDefault();
+        console.log(e.target);
+        e.target.reset();
+    }
     return (
-        <Form>
+        <Form onSubmit={(event) => handleFormSubmit(event)}>
             <FormGroup>
-                <Label for="exampleEmail">
+                <Label for="Name">
+                    Name
+                </Label>
+                <Input
+                    id="Name"
+                    name="name"
+                    placeholder="Enter your full name"
+                    type="text"
+                    max="20"
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label for="Email">
                     Email
                 </Label>
                 <Input
-                    id="exampleEmail"
+                    id="Email"
                     name="email"
-                    placeholder="with a placeholder"
+                    placeholder="yourEmail@domain.com"
                     type="email"
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="examplePassword">
-                    Password
-                </Label>
-                <Input
-                    id="examplePassword"
-                    name="password"
-                    placeholder="password placeholder"
-                    type="password"
-                />
-            </FormGroup>
-            <FormGroup>
-                <Label for="exampleSelect">
+                <Label for="PartySize">
                     Select
                 </Label>
                 <Input
-                    id="exampleSelect"
-                    name="select"
+                    id="PartySize"
+                    name="partySize"
                     type="select"
                 >
                     <option>
@@ -49,103 +57,80 @@ export function ReservationForm() {
                     <option>
                         5
                     </option>
-                </Input>
-            </FormGroup>
-            <FormGroup>
-                <Label for="exampleSelectMulti">
-                    Select Multiple
-                </Label>
-                <Input
-                    id="exampleSelectMulti"
-                    multiple
-                    name="selectMulti"
-                    type="select"
-                >
                     <option>
-                        1
+                        6
                     </option>
                     <option>
-                        2
+                        7
                     </option>
                     <option>
-                        3
-                    </option>
-                    <option>
-                        4
-                    </option>
-                    <option>
-                        5
+                        8
                     </option>
                 </Input>
             </FormGroup>
             <FormGroup>
-                <Label for="exampleText">
-                    Text Area
+                <Label for="Date">Date</Label>
+                <Input
+                    id="Date"
+                    name="date"
+                    type="date"
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label for="Time">Time</Label>
+                <Input
+                    id="Time"
+                    name="time"
+                    type="time"
+                />
+            </FormGroup>
+            <FormGroup>
+                <Label for="DietaryNotes">
+                    Dietary Notes
                 </Label>
                 <Input
-                    id="exampleText"
-                    name="text"
+                    id="DietaryNotes"
+                    name="dietaryNotes"
                     type="textarea"
+                    max="30"
                 />
             </FormGroup>
             <FormGroup>
-                <Label for="exampleFile">
-                    File
-                </Label>
-                <Input
-                    id="exampleFile"
-                    name="file"
-                    type="file"
-                />
-                <FormText>
-                    This is some placeholder block-level help text for the above input. It‘s a bit lighter and easily
-                    wraps to a new line.
-                </FormText>
-            </FormGroup>
-            <FormGroup tag="fieldset">
                 <legend>
-                    Radio Buttons
+                    Seating Preference
                 </legend>
-                <FormGroup check>
-                    <Input
-                        name="radio1"
-                        type="radio"
-                    />
-                    {' '}
-                    <Label check>
-                        Option one is this and that—be sure to include why it‘s great
-                    </Label>
-                </FormGroup>
-                <FormGroup check>
-                    <Input
-                        name="radio1"
-                        type="radio"
-                    />
-                    {' '}
-                    <Label check>
-                        Option two can be something else and selecting it will deselect option one
-                    </Label>
-                </FormGroup>
-                <FormGroup
-                    check
-                    disabled
-                >
-                    <Input
-                        disabled
-                        name="radio1"
-                        type="radio"
-                    />
-                    {' '}
-                    <Label check>
-                        Option three is disabled
-                    </Label>
-                </FormGroup>
+                <ButtonGroup>
+                    <Button
+                        color="primary"
+                        outline
+                        onClick={() => setSelected('Indoor')}
+                        active={selected === 'Indoor'}
+                    >
+                        Indoor
+                    </Button>
+                    <Button
+                        color="primary"
+                        outline
+                        onClick={() => setSelected('Outdoor')}
+                        active={selected === 'Outdoor'}
+                    >
+                        Outdoor
+                    </Button>
+                    <Button
+                        color="primary"
+                        outline
+                        onClick={() => setSelected('Bar')}
+                        active={selected === 'Bar'}
+                    >
+                        Bar
+                    </Button>
+                </ButtonGroup>
             </FormGroup>
             <FormGroup check>
-                <Input type="checkbox"/>
+                <Input type="checkbox" id={"Newsletter"} name="Newsletter"/>
                 {' '}
-                <Label check>
-                    Check me out
+                <Label check for="Newsletter">
+                    Sign up for our newsletter
                 </Label>
             </FormGroup>
             <Button>
