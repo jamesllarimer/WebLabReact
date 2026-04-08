@@ -16,7 +16,7 @@ export default function Home() {
             <Container fluid className={"my-4"}>
                 <HeroSection/>
             </Container>
-            <Container>
+            <Container className="text-center align-items-center">
                 <StaffSection/>
             </Container>
         </>

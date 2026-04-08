@@ -7,6 +7,7 @@ export default function StaffCard({id, name, title, imgUrl, imgAlt}: StaffInfo) 
             style={{
                 width: '18rem'
             }}
+              className="mx-auto"
         >
             <img
                 alt={imgAlt}
