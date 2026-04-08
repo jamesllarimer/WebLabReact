@@ -2,13 +2,35 @@ import {Form, FormGroup, FormText, Label, Input, Button, ButtonGroup, FormFeedba
 import {useState} from "react";
 
 export function ReservationForm() {
-    const [selected, setSelected] = useState('');
+    let initialValues = {
+        name: "",
+        email: "",
+        date: Date.now().toLocaleString("en-US"),
+        time: "",
+        dietaryNotes: "",
+        newsLetter: false,
+        seatingPreference: "Indoor",
+        partySize: 1
+    }
+    const [formData, setFormData] = useState(initialValues)
+    const [showSubmitResults, setShowSubmitResults] = useState(false);
+    const MAX_DI = 30;
+    const remaining = MAX_DI - formData.dietaryNotes.length;
+
     const handleFormSubmit = (e: any) => {
         e.preventDefault();
         console.log(e.target);
         e.target.reset();
+        setShowSubmitResults(true);
     }
+    const handleChange = (e: any) => {
+        setFormData({...formData, [e.target.name]: e.target.value});
+    }
+   const setSeatingPref = (pref: string) => {
+       setFormData({...formData, seatingPreference: pref});
+   }
     return (
+        <>
         <Form onSubmit={(event) => handleFormSubmit(event)}>
             <FormGroup>
                 <Label for="Name">
@@ -20,6 +42,8 @@ export function ReservationForm() {
                     placeholder="Enter your full name"
                     type="text"
                     max="20"
+                    value={formData.name}
+                    onChange={handleChange}
                 />
             </FormGroup>
             <FormGroup>
@@ -31,6 +55,8 @@ export function ReservationForm() {
                     name="email"
                     placeholder="yourEmail@domain.com"
                     type="email"
+                    value={formData.email}
+                    onChange={handleChange}
                 />
             </FormGroup>
             <FormGroup>
@@ -74,6 +100,8 @@ export function ReservationForm() {
                     id="Date"
                     name="date"
                     type="date"
+                    onChange={handleChange}
+                    value={formData.date}
                 />
             </FormGroup>
             <FormGroup>
@@ -82,6 +110,8 @@ export function ReservationForm() {
                     id="Time"
                     name="time"
                     type="time"
+                    onChange={handleChange}
+                    value={formData.time}
                 />
             </FormGroup>
             <FormGroup>
@@ -92,8 +122,12 @@ export function ReservationForm() {
                     id="DietaryNotes"
                     name="dietaryNotes"
                     type="textarea"
-                    max="30"
+                    max={MAX_DI}
+                    onChange={handleChange}
                 />
+                <div>
+                    Remaining: {remaining}
+                </div>
             </FormGroup>
             <FormGroup>
                 <legend>
@@ -103,39 +137,51 @@ export function ReservationForm() {
                     <Button
                         color="primary"
                         outline
-                        onClick={() => setSelected('Indoor')}
-                        active={selected === 'Indoor'}
+                        onClick={() => setSeatingPref('Indoor')}
+                        active={formData.seatingPreference === 'Indoor'}
                     >
                         Indoor
                     </Button>
                     <Button
                         color="primary"
                         outline
-                        onClick={() => setSelected('Outdoor')}
-                        active={selected === 'Outdoor'}
+                        onClick={() => setSeatingPref('Outdoor')}
+                        active={formData.seatingPreference === 'Outdoor'}
                     >
                         Outdoor
                     </Button>
                     <Button
                         color="primary"
                         outline
-                        onClick={() => setSelected('Bar')}
-                        active={selected === 'Bar'}
+                        onClick={() => setSeatingPref('Bar')}
+                        active={formData.seatingPreference === 'Bar'}
                     >
                         Bar
                     </Button>
                 </ButtonGroup>
             </FormGroup>
             <FormGroup check>
-                <Input type="checkbox" id={"Newsletter"} name="Newsletter"/>
+                <Input type="checkbox" id="Newsletter" name="Newsletter" onChange={handleChange} />
                 {' '}
                 <Label check for="Newsletter">
                     Sign up for our newsletter
                 </Label>
             </FormGroup>
-            <Button>
+            <Button type="submit" >
                 Submit
             </Button>
         </Form>
+            {showSubmitResults ?  <ul>
+                <li>Name: {formData.name}</li>
+                <li>Email: {formData.email}</li>
+                <li>Party size: {formData.partySize}</li>
+                <li>Date: {formData.date}</li>
+                <li>Time: {formData.time}</li>
+                <li>Dietary Preferences: {formData.dietaryNotes}</li>
+                <li>Seating Preference: {formData.seatingPreference}</li>
+                <li>Newsletter: {formData.newsLetter}</li>
+            </ul> : null
+            }
+        </>
     )
 }
