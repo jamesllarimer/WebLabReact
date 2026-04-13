@@ -1,4 +1,15 @@
-import {Button, Card, CardBody, CardFooter, CardText, CardTitle, Container, ListGroup, ListGroupItem} from "reactstrap";
+import {
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    CardHeader,
+    CardText,
+    CardTitle,
+    Container,
+    ListGroup,
+    ListGroupItem
+} from "reactstrap";
 import {useCart} from "~/context/CartContext";
 import type {Route} from "../../.react-router/types/app/pages/+types/checkout";
 import ActionModal from "~/components/actionModal";
@@ -38,20 +49,32 @@ export default function Checkout() {
         <Container>
             <h1>Checkout</h1>
             <Card>
-                <CardTitle>Cart</CardTitle>
+                <CardHeader tag="h3" className={"menu-section-header"}>
+                    Cart
+                </CardHeader>
+                <CardBody>
+                    <h4>Cart Items</h4>
                 <ul>
                     {cartItemList}
                 </ul>
+                </CardBody>
                 <CardBody>
                     <CardText>Subtotal {cartTotal}</CardText>
                     <CardText>Tax Rate: 8%</CardText>
-                    <CardText>Tax: {(cartTotal * 0.08).toFixed(2)}</CardText>
-                    <CardText>Total: {(cartTotal * 1.08).toFixed(2)}</CardText>
+                    <CardText>Tax: {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                    }).format((cartTotal * 0.08))} </CardText>
+                    <CardText>Total: {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                    }).format((cartTotal * 1.08))}</CardText>
                 </CardBody>
                 <CardFooter>
-                    <Button color="primary"  onClick={() => setCheckoutModalOpen(!checkoutModalOpen)}>Checkout</Button>
+                    <Button color="primary" onClick={() => setCheckoutModalOpen(!checkoutModalOpen)}>Checkout</Button>
                     {' '}
-                    <Button color="danger" onClick={() => setClearCartModalOpen(!clearCartModalOpen)}>Clear Cart</Button>
+                    <Button color="danger" onClick={() => setClearCartModalOpen(!clearCartModalOpen)}>Clear
+                        Cart</Button>
                 </CardFooter>
             </Card>
 

@@ -39,7 +39,7 @@ export default function Menu() {
         {categories
             .filter(cat => selectedCategory === "All" || selectedCategory === cat)
             .map(cat => (
-                <MenuCategorySection key={cat} category={cat} />
+                <MenuCategorySection key={cat} category={cat}/>
             ))
         }
         <Cart/>
