@@ -2,7 +2,7 @@ import type {Route} from "./+types/menu";
 import MenuCategorySection from "~/components/menuCategorySection";
 import {Container, FormGroup, Input, Label} from "reactstrap";
 import {useState} from "react";
-import {Cart} from "~/components/cart";
+
 
 export function meta({}: Route.MetaArgs) {
     return [
@@ -42,6 +42,5 @@ export default function Menu() {
                 <MenuCategorySection key={cat} category={cat}/>
             ))
         }
-        <Cart/>
     </>
 }
