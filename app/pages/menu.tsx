@@ -14,7 +14,6 @@ export function meta({}: Route.MetaArgs) {
 export default function Menu() {
     const [selectedCategory, setSelectedCategory] = useState("All");
 
-    //Todo pull from data
     const categories = ["Breakfast", "Lunch", "Dinner", "Drinks"];
 
     const handleChange = (e:any) => setSelectedCategory(e.target.value);
