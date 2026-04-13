@@ -46,20 +46,20 @@ export function ReservationForm() {
                 <FormGroup>
                     <Label htmlFor="name">Name</Label>
                     <input {...register("name")} className="form-control" placeholder="Enter your full name"
-                           type="text"/>
+                           type="text" id={"name"}/>
                     {errors.name && <p>{errors.name.message}</p>}
                 </FormGroup>
 
                 <FormGroup>
                     <Label htmlFor="email">Email</Label>
                     <input {...register("email")} className="form-control" placeholder="yourEmail@domain.com"
-                           type="email"/>
+                           type="email" id={"email"}/>
                     {errors.email && <p>{errors.email.message}</p>}
                 </FormGroup>
 
                 <FormGroup>
                     <Label htmlFor="partySize">Party Size</Label>
-                    <select {...register("partySize")} className="form-select">
+                    <select {...register("partySize")} className="form-select" id={"partySize"}>
                         {[1, 2, 3, 4, 5, 6, 7, 8].map(n => (
                             <option key={n} value={n}>{n}</option>
                         ))}
@@ -69,26 +69,26 @@ export function ReservationForm() {
 
                 <FormGroup>
                     <Label htmlFor="date">Date</Label>
-                    <input {...register("date")} className="form-control" type="date"/>
+                    <input {...register("date")} className="form-control" type="date" id={"date"}/>
                     {errors.date && <p>{errors.date.message}</p>}
                 </FormGroup>
 
                 <FormGroup>
                     <Label htmlFor="time">Time</Label>
-                    <input {...register("time")} className="form-control" type="time"/>
+                    <input {...register("time")} className="form-control" type="time" id={"time"}/>
                     {errors.time && <p>{errors.time.message}</p>}
                 </FormGroup>
 
                 <FormGroup>
                     <Label htmlFor="dietaryNotes">Dietary Notes</Label>
-                    <textarea {...register("dietaryNotes")} className="form-control"/>
+                    <textarea {...register("dietaryNotes")} className="form-control" id={"dietaryNotes"}/>
                     <div>Remaining: {remaining}</div>
                     {errors.dietaryNotes && <p>{errors.dietaryNotes.message}</p>}
                 </FormGroup>
 
                 <FormGroup>
                     <Label htmlFor="seatingPreference">Seating Preference</Label>
-                    <select {...register("seatingPreference")} className="form-select">
+                    <select {...register("seatingPreference")} className="form-select" id={"seatingPreference"}>
                         <option>Indoor</option>
                         <option>Outdoor</option>
                         <option>Bar</option>
@@ -97,7 +97,7 @@ export function ReservationForm() {
                 </FormGroup>
 
                 <FormGroup check>
-                    <input type="checkbox" {...register("newsLetter")} className="form-check-input"/>
+                    <input type="checkbox" {...register("newsLetter")} className="form-check-input" id={"newsLetter"}/>
                     {' '}
                     <Label check htmlFor="newsLetter">Sign up for our newsletter</Label>
                 </FormGroup>
@@ -106,7 +106,7 @@ export function ReservationForm() {
             </Form>
 
             {submittedData && (
-                <Card className="mt-5">
+                <Card className="mt-5" id={"ReservationResults"}>
                     <CardHeader>
                         Submissions successful
                     </CardHeader>

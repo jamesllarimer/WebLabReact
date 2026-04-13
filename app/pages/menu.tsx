@@ -26,6 +26,7 @@ export default function Menu() {
                     name="category"
                     onChange={handleChange}
                     type="select"
+                    id="category"
                 >
                     <option value="All">All</option>
                     {categories.map(cat => (
